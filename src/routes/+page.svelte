@@ -16,6 +16,12 @@
     import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
     import { Input } from "$lib/components/ui/input/index.js";
     import * as Sheet from "$lib/components/ui/sheet/index.js";
+
+    // Mode switcher
+    import Sun from "lucide-svelte/icons/sun";
+    import Moon from "lucide-svelte/icons/moon";
+
+    import { toggleMode } from "mode-watcher";
 </script>
 
 <div class="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
@@ -200,6 +206,15 @@
                     <DropdownMenu.Item>Logout</DropdownMenu.Item>
                 </DropdownMenu.Content>
             </DropdownMenu.Root>
+            <Button on:click={toggleMode} variant="outline" size="icon">
+                <Sun
+                        class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
+                />
+                <Moon
+                        class="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
+                />
+                <span class="sr-only">Toggle theme</span>
+            </Button>
         </header>
         <main class="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
             <div class="flex items-center">
